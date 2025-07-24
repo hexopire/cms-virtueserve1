@@ -4,20 +4,25 @@
   "info": {
     "singularName": "blog",
     "pluralName": "blogs",
-    "displayName": "blog"
+    "displayName": "Blog"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
-      "type": "string"
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
     },
     "content": {
-      "type": "richtext"
+      "type": "text"
     },
-    "image": {
+    "coverImage": {
       "allowedTypes": [
         "images",
         "files",
@@ -27,9 +32,28 @@
       "type": "media",
       "multiple": false
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "name"
+    "images": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "context": {
+      "type": "richtext",
+      "required": true
+    },
+    "isPublishedAt": {
+      "type": "datetime"
+    },
+    "website": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::website.website",
+      "inversedBy": "blogs"
     }
   }
 }
