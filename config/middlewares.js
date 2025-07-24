@@ -33,7 +33,8 @@ module.exports = ({ env }) => [
     enabled: true,
     origin: [
       "http://localhost:3000",           // local frontend
-      "https://virtue-s.vercel.app",     // ✅ deployed frontend (no trailing slash)
+      "https://virtue-s.vercel.app",
+      "https://cms-virtueserve1.onrender.com",     // ✅ deployed frontend (no trailing slash)
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     headers: "*",
