@@ -28,15 +28,19 @@ module.exports = ({ env }) => [
   },
 
   {
-    name: "strapi::cors",
-    config: {
-      enabled: true,
-      origin: ["http://localhost:3000", "https://virtue-s.vercel.app/"], // Add your frontend domains here
-      methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-      headers: "*",
-      keepHeaderOnError: true,
-    },
+  name: "strapi::cors",
+  config: {
+    enabled: true,
+    origin: [
+      "http://localhost:3000",           // local frontend
+      "https://virtue-s.vercel.app",     // ✅ deployed frontend (no trailing slash)
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    headers: "*",
+    keepHeaderOnError: true,
   },
+},
+
 
   "strapi::poweredBy",
   "strapi::logger",
