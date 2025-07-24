@@ -1,5 +1,6 @@
 module.exports = ({ env }) => [
   "strapi::errors",
+
   {
     name: "strapi::security",
     config: {
@@ -27,21 +28,21 @@ module.exports = ({ env }) => [
     },
   },
 
+  // ✅ CORS Configuration Block
   {
-  name: "strapi::cors",
-  config: {
-    enabled: true,
-    origin: [
-      "http://localhost:3000",           // local frontend
-      "https://virtue-s.vercel.app",
-      "https://cms-virtueserve1.onrender.com",     // ✅ deployed frontend (no trailing slash)
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    headers: "*",
-    keepHeaderOnError: true,
+    name: "strapi::cors",
+    config: {
+      enabled: true,
+      origin: [
+        "http://localhost:3000", // Local dev
+        "https://virtue-s.vercel.app", // Your frontend on Vercel
+        "*" // (Optional) Allow ALL origins — for a public CMS API
+      ],
+      methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+      headers: "*",
+      keepHeaderOnError: true,
+    },
   },
-},
-
 
   "strapi::poweredBy",
   "strapi::logger",
